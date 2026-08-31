@@ -13,7 +13,7 @@ WWA Project is a web automation platform designed to simplify and automate repet
 ## Tech Stack
 
 * **Frontend:** HTML, CSS, JavaScript
-* **Backend:** Node.js *(Update if different)*
+* **Backend:** Python *(Django)*
 * **Version Control:** Git & GitHub
 
 ## Project Structure
