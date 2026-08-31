@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Excel-Word
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row g-4">
+
+        <!-- ============================= -->
+        <!-- Left Side : Customer Selection -->
+        <!-- ============================= -->
+        <div class="col-lg-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Customer Selection</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST" action="{% url 'generate_word' %}">
+                        {% csrf_token %}
+
+                        <!-- Customer -->
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Select WWA Customer
+                            </label>
+
+                            <select id="wwa_customer"
+                                    name="wwa_customer"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">-- Select Customer --</option>
+
+                                {% for customer in customers %}
+                                    <option value="{{ customer }}">
+                                        {{ customer }}
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+                        <!-- Members Deadline -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Members Deadline
+                            </label>
+
+                            <input
+                                type="text"
+                                id="members_deadline"
+                                name="members_deadline"
+                                class="form-control"
+                                placeholder="Select a weekday"
+                                required>
+
+                        </div>
+
+                        <!-- Half -->
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Bi-Weekly
+                            </label>
+
+                            <select id="validity_half"
+                                    name="validity_half"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">-- Select Half --</option>
+
+                                <option value="First Half">
+                                    First Half
+                                </option>
+
+                                <option value="Second Half">
+                                    Second Half
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="text-center">
+
+                            <button class="btn btn-primary px-4">
+                                Generate Word
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Right Side : Customer Details -->
+        <!-- ============================= -->
+
+        <div class="col-lg-8">
+
+            <div id="customer-info"
+                 class="card shadow h-100 d-none">
+
+                <div class="card-header bg-success text-white">
+
+                    <h5 class="mb-0">
+                        Customer Details
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <strong>Quarterly Surcharges</strong><br>
+                            <span id="Quarterly">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Monthly Surcharges</strong><br>
+                            <span id="Monthly">-</span>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <strong>Bi-Weekly Surcharges</strong><br>
+                            <span id="Bi_Weekly">-</span>
+                        </div>
+                        
+                        
+                        <div class="col-md-6 mb-3">
+                            <strong>Update Type</strong><br>
+                            <span id="update_type">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Handle Via</strong><br>
+                            <span id="handle_via">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Commodity</strong><br>
+                            <span id="commodity">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Cargo Ratio</strong><br>
+                            <span id="cargo_ratio">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Frequency OFR</strong><br>
+                            <span id="frequency">-</span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>RFQ Owner</strong><br>
+                            <span id="owner">-</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+flatpickr("#members_deadline", {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+
+    disable: [
+        function(date) {
+            // Disable Saturday (6) and Sunday (0)
+            return (date.getDay() === 0 || date.getDay() === 6);
+        }
+    ]
+});
+</script>
+
+
+
+
+
+{% comment %} For Real time data {% endcomment %}
+<script>
+const customer = document.getElementById("wwa_customer");
+
+customer.addEventListener("change", function () {
+
+    fetch(`/rfq/customer-details/?customer=${this.value}`)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if (!data.success) return;
+
+        document.getElementById("customer-info").classList.remove("d-none");
+
+        document.getElementById("Quarterly").textContent = data.Quarterly;
+        document.getElementById("Monthly").textContent = data.Monthly;
+        document.getElementById("Bi_Weekly").textContent = data.BI_WEEKLY;
+        document.getElementById("update_type").textContent = data.update_type;
+        document.getElementById("handle_via").textContent = data.handle_via;
+        document.getElementById("commodity").textContent = data.commodity;
+        document.getElementById("cargo_ratio").textContent = data.cargo_ratio;
+        document.getElementById("frequency").textContent = data.frequency_ofr;
+        document.getElementById("owner").textContent = data.rfq_owner;
+
+    });
+
+});
+</script>
+
+{% endblock %}

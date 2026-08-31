@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create User
+{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #F5F4FB;
+    }
+
+    .form-container {
+        max-width: 750px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .page-title {
+        color: #306280;
+        font-weight: bold;
+    }
+
+    .btn-save {
+        background-color: #306280;
+        color: white;
+    }
+
+    .btn-save:hover {
+        background-color: #244b63;
+        color: white;
+    }
+</style>
+
+<div class="container">
+
+    <div class="form-container">
+
+        <!-- Heading -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="page-title">Create New User</h3>
+                <p class="text-muted mb-0">
+                    WWA Automation Portal – Admin User Management
+                </p>
+            </div>
+
+            <a href="{% url 'user_management' %}" class="btn btn-outline-secondary btn-sm">
+                ← Back
+            </a>
+        </div>
+
+        <!-- Success / Error Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- User Creation Form -->
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="row">
+
+                <!-- Employee Name -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Employee Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        placeholder="Enter Employee Name"
+                        required>
+                </div>
+
+                <!-- Employee ID -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Employee ID</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="employee_id"
+                        placeholder="WWA001"
+                        required>
+                </div>
+
+                <!-- Username -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Username</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="username"
+                        placeholder="Enter Username"
+                        required>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        placeholder="user@wwa.com"
+                        required>
+                </div>
+
+                <!-- Password -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Password</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="Enter Password"
+                        required>
+                </div>
+
+                <!-- Department -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Department</label>
+
+                    <select class="form-select" name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="IT Automation">IT Automation</option>
+                        <option value="RFQ">RFQ Team</option>
+                        <option value="GRDB">GRDB Team</option>
+                        <option value="STATI">STAT Team</option>
+                    </select>
+                </div>
+
+                <!-- Role -->
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Role</label>
+
+                    <select class="form-select" name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="RFQ">RFQ Team</option>
+                        <option value="GRDB">GRDB Team</option>
+                        <option value="STATI">STAT Team</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+
+                <a href="{% url 'user_management' %}" class="btn btn-outline-secondary">
+                    Cancel
+                </a>
+
+                <button type="submit" class="btn btn-save">
+                    Create User
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

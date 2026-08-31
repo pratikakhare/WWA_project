@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+403 - Access Denied
+{% endblock %}
+
+{% block content %}
+
+<style>
+body{
+    background:#F5F4FB;
+}
+
+.error-container{
+    max-width:700px;
+    margin:70px auto;
+    background:white;
+    border-radius:18px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.error-code{
+    font-size:90px;
+    font-weight:bold;
+    color:#306280;
+}
+
+.error-title{
+    color:#2E2C4A;
+    font-weight:bold;
+}
+
+.error-text{
+    color:#6c757d;
+    font-size:18px;
+}
+
+.btn-dashboard{
+    background:#306280;
+    color:white;
+    border:none;
+    padding:10px 25px;
+    border-radius:8px;
+}
+
+.btn-dashboard:hover{
+    background:#244b63;
+    color:white;
+}
+
+.icon-lock{
+    font-size:55px;
+}
+</style>
+
+<div class="container">
+
+    <div class="error-container">
+
+        <div class="icon-lock">🔒</div>
+
+        <div class="error-code">
+            403
+        </div>
+
+        <h2 class="error-title">
+            Access Denied
+        </h2>
+
+        <p class="error-text mt-3">
+            You don't have permission to access this module in the
+            <strong>WWA Automation Portal.</strong>
+        </p>
+
+        <p class="text-muted">
+            Please contact the IT Automation Administrator if you believe
+            this access should be granted.
+        </p>
+
+        <div class="mt-4">
+            <a href="{% url 'dashboard' %}" class="btn btn-dashboard">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

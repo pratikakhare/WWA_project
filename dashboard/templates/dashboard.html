@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+
+/* ================================
+   WWA Automation Portal Theme
+==================================*/
+
+body{
+    background:#F3F3F3;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+/* Main Container */
+.dashboard-container{
+    background:#F3F3F3;
+    padding:30px 40px;
+    border-radius:18px;
+}
+
+/* ================================
+   Welcome Header
+==================================*/
+
+.welcome-box h2{
+    color:#1D5FE9;
+    font-size:34px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.welcome-box p{
+    color:#555;
+    font-size:16px;
+}
+
+.welcome-box strong{
+    color:#1D5FE9;
+    font-weight:600;
+}
+
+.badge{
+    background:#1D5FE9 !important;
+    padding:8px 18px;
+    border-radius:20px;
+    font-weight:600;
+    font-size:13px;
+}
+
+/* ================================
+   Common Card Design
+==================================*/
+
+.card{
+    background:#FFFFFF;
+    border-radius:18px;
+    border:2px solid #D8D8D8;
+    box-shadow:none;
+    transition:.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+/* Statistics Cards (Top) */
+
+.card h6{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#666;
+    font-weight:700;
+}
+
+.card h2{
+    font-size:36px;
+    font-weight:700;
+    margin-top:8px;
+}
+
+/* ==================================
+   Top Statistics Colors
+====================================*/
+
+.row.mb-5:first-of-type .col-md-4:nth-child(1) .card{
+    background:#EDF8EF;
+    border-color:#3FA34D;
+}
+
+.row.mb-5:first-of-type .col-md-4:nth-child(1) h2,
+.row.mb-5:first-of-type .col-md-4:nth-child(1) h6{
+    color:#1B5E20;
+}
+
+.row.mb-5:first-of-type .col-md-4:nth-child(2) .card{
+    background:#FFF8E9;
+    border-color:#F4A62A;
+}
+
+.row.mb-5:first-of-type .col-md-4:nth-child(2) h2,
+.row.mb-5:first-of-type .col-md-4:nth-child(2) h6{
+    color:#E65100;
+}
+
+.row.mb-5:first-of-type .col-md-4:nth-child(3) .card{
+    background:#EEF5FF;
+    border-color:#1D5FE9;
+}
+
+.row.mb-5:first-of-type .col-md-4:nth-child(3) h2,
+.row.mb-5:first-of-type .col-md-4:nth-child(3) h6{
+    color:#1D5FE9;
+}
+
+/* ==================================
+   Team Statistics
+====================================*/
+
+.row.mb-5:last-of-type .col-md-3:nth-child(1) .card{
+    background:#EEF5FF;
+    border-color:#1D5FE9;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(1) h2,
+.row.mb-5:last-of-type .col-md-3:nth-child(1) h6{
+    color:#1D5FE9;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(2) .card{
+    background:#FFF8E9;
+    border-color:#F57C00;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(2) h2,
+.row.mb-5:last-of-type .col-md-3:nth-child(2) h6{
+    color:#F57C00;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(3) .card{
+    background:#F7EDFC;
+    border-color:#8E24AA;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(3) h2,
+.row.mb-5:last-of-type .col-md-3:nth-child(3) h6{
+    color:#8E24AA;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(4) .card{
+    background:#EDF8EF;
+    border-color:#2E7D32;
+}
+
+.row.mb-5:last-of-type .col-md-3:nth-child(4) h2,
+.row.mb-5:last-of-type .col-md-3:nth-child(4) h6{
+    color:#2E7D32;
+}
+
+/* ==================================
+   Module Cards (RFQ, GRDB, STAT...)
+====================================*/
+
+.card-title{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.card-text{
+    font-size:15px;
+    line-height:1.5;
+    color:#555 !important;
+}
+
+/* RFQ */
+.row.g-4 .col-md-4:nth-child(1) .card{
+    background:#EEF5FF;
+    border-color:#1D5FE9;
+}
+.row.g-4 .col-md-4:nth-child(1) .card-title{
+    color:#1D5FE9;
+}
+
+/* GRDB */
+.row.g-4 .col-md-4:nth-child(2) .card{
+    background:#FFF8E9;
+    border-color:#F57C00;
+}
+.row.g-4 .col-md-4:nth-child(2) .card-title{
+    color:#F57C00;
+}
+
+/* STAT */
+.row.g-4 .col-md-4:nth-child(3) .card{
+    background:#F7EDFC;
+    border-color:#8E24AA;
+}
+.row.g-4 .col-md-4:nth-child(3) .card-title{
+    color:#8E24AA;
+}
+
+/* User Management */
+.row.g-4 .col-md-4:nth-child(4) .card{
+    background:#EDF8EF;
+    border-color:#2E7D32;
+}
+.row.g-4 .col-md-4:nth-child(4) .card-title{
+    color:#2E7D32;
+}
+
+/* ==================================
+   Buttons
+====================================*/
+
+.buttons{
+    background:#1D5FE9;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 20px;
+    font-weight:600;
+}
+
+.buttons:hover{
+    background:#1747B8;
+    color:white;
+}
+
+/* ==================================
+   Spacing
+====================================*/
+
+.welcome-box{
+    margin-bottom:40px;
+}
+
+.card-body{
+    padding:24px;
+}
+
+</style>
+
+<div class="container mt-5 dashboard-container">
+
+    <!-- Dashboard Heading -->
+    <div class="welcome-box">
+        <h2>WorldWide Alliance Automation Portal</h2>
+
+        <p class="text-muted mt-2 mb-0">
+            Welcome,
+            <strong>{{ employee_name }}</strong>
+        </p>
+        
+        <span class="badge bg-primary mt-2">
+            {{ role }}
+        </span>
+    </div>
+
+        {% if role == "ADMIN" %}
+            <!-- Dashboard Statistics -->
+                <div class="row g-4 mb-5">
+
+                    <!-- Total Employees -->
+                    <div class="col-md-4">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>Total Employees</h6>
+                                <h2>{{ total_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Users -->
+                    <div class="col-md-4">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>Active Users</h6>
+                                <h2>{{ active_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disabled Users -->
+                    <div class="col-md-4">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>Disabled Users</h6>
+                                <h2>{{ disabled_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row g-4 mb-5">
+
+                    <!-- RFQ -->
+                    <div class="col-md-3">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>RFQ Team</h6>
+                                <h2>{{ rfq_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GRDB -->
+                    <div class="col-md-3">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>GRDB Team</h6>
+                                <h2>{{ grdb_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STAT -->
+                    <div class="col-md-3">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>STAT Team</h6>
+                                <h2>{{ stat_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin -->
+                    <div class="col-md-3">
+                        <div class="card shadow text-center h-100">
+                            <div class="card-body">
+                                <h6>Administrators</h6>
+                                <h2>{{ admin_users }}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        {% endif %}
+
+    <div class="row g-4">
+
+        {% if role == "ADMIN" or role == "RFQ" %}
+        <!-- RFQ Card -->
+        <div class="col-md-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">RFQ Team</h3>
+                    <p class="card-text">
+                        Manage RFQ processes and automation tools.
+                    </p>
+
+                    <a href="{% url 'rfq_dashboard' %}" class="btn buttons">
+                        Go to RFQ
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if role == "ADMIN" or role == "GRDB" %}
+        <!-- GRDB Card -->
+        <div class="col-md-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">GRDB Team</h3>
+                    <p class="card-text">
+                        Access GRDB team applications and reports.
+                    </p>
+
+                    <a href="{% url 'grdb_dashboard' %}" class="btn buttons">
+                        Go to GRDB
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if role == "ADMIN" or role == "STATI" %}
+        <!-- STAT Card -->
+        <div class="col-md-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">STAT Team</h3>
+                    <p class="card-text">
+                        View statistics, dashboards and performance reports.
+                    </p>
+
+                    <a href="{% url 'stati_dashboard' %}" class="btn buttons">
+                        Go to STAT
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if role == "ADMIN" %}
+        <!-- User Management Card -->
+        <div class="col-md-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">User Management</h3>
+
+                    <p class="card-text">
+                        Create, edit and manage WWA employee login credentials.
+                    </p>
+
+                    <a href="{% url 'user_management' %}" class="btn buttons">
+                        Manage Users
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

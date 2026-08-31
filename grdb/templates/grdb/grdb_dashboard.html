@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% block title %}
+GRDB Dashboard
+{% endblock %}
+
+{% block content %}
+
+<style>
+/* =====================================
+   GRDB Dashboard Theme (Orange)
+===================================== */
+
+body{
+    background:#F3F3F3;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+.grdb-container{
+    background:#FFFFFF;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+/* Header */
+
+.dashboard-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.dashboard-header h2{
+    color:#F57C00;
+    font-weight:700;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.dashboard-header p{
+    color:#666;
+    font-size:16px;
+}
+
+.dashboard-badge{
+    display:inline-block;
+    background:#FFF3E0;
+    color:#E65100;
+    border:1px solid #F57C00;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* Cards */
+
+.card{
+    background:#FFF8E9;
+    border:2px solid #F4A62A;
+    border-radius:18px;
+    transition:.3s ease;
+    box-shadow:none;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(245,124,0,.15);
+}
+
+.card-body{
+    padding:28px 22px;
+}
+
+.card-title{
+    color:#E65100;
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.card-text{
+    color:#555;
+    font-size:15px;
+    line-height:1.6;
+    min-height:60px;
+}
+
+/* Buttons */
+
+.grdb-btn{
+    background:#F57C00;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    font-weight:600;
+}
+
+.grdb-btn:hover{
+    background:#D96A00;
+    color:white;
+}
+
+/* Icons */
+
+.card-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+</style>
+
+<div class="container mt-5 grdb-container">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+
+        <h2>GRDB Dashboard</h2>
+
+        <p>Global Reports & Database Automation Portal</p>
+
+        <span class="dashboard-badge">
+            GRDB Team Module
+        </span>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4">
+
+        <!-- KPI Report -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📊</div>
+
+                    <h3 class="card-title">KPI Report</h3>
+
+                    <p class="card-text">
+                        View key performance indicators, dashboards and performance reports.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open KPI Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Excel to Word -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📄</div>
+
+                    <h3 class="card-title">Excel to Word</h3>
+
+                    <p class="card-text">
+                        Convert Excel files into standardized Word documents automatically.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open Excel to Word
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Centric Validation -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">✔️</div>
+
+                    <h3 class="card-title">Centric Validation</h3>
+
+                    <p class="card-text">
+                        Validate shipment data and improve report quality automatically.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open Validation
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder Project -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">🚢</div>
+
+                    <h3 class="card-title">Ocean Freight Tool</h3>
+
+                    <p class="card-text">
+                        Manage freight reports, automation and carrier validation workflows.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open Tool
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder Project -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📁</div>
+
+                    <h3 class="card-title">Data Quality Report</h3>
+
+                    <p class="card-text">
+                        Generate automated GRDB data quality and exception reports.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder Project -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">⚙️</div>
+
+                    <h3 class="card-title">Automation Jobs</h3>
+
+                    <p class="card-text">
+                        Execute GRDB automation jobs and monitor processing status.
+                    </p>
+
+                    <a href="#" class="btn grdb-btn w-100">
+                        Open Automation
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

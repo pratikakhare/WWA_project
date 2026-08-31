@@ -1,0 +1,32 @@
+.custom-footer{
+    background:#0b1f3a;
+    color:#fff;
+    padding:15px 30px;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.footer-left,
+.footer-center,
+.footer-right{
+    font-size:16px;
+}
+
+.custom-footer strong{
+    color:#FFD54F;
+}
+
+@media (max-width:768px){
+
+    .footer-content{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+
+}

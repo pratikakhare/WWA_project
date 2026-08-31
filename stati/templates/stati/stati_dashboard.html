@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% block title %}
+STAT Dashboard
+{% endblock %}
+
+{% block content %}
+
+<style>
+/* =====================================
+   STAT Dashboard Theme (Purple)
+===================================== */
+
+body{
+    background:#F3F3F3;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+.stati-container{
+    background:#FFFFFF;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+/* Header */
+
+.dashboard-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.dashboard-header h2{
+    color:#8E24AA;
+    font-weight:700;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.dashboard-header p{
+    color:#666;
+    font-size:16px;
+}
+
+.dashboard-badge{
+    display:inline-block;
+    background:#F7EDFC;
+    color:#7B1FA2;
+    border:1px solid #8E24AA;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* Cards */
+
+.card{
+    background:#F7EDFC;
+    border:2px solid #C77DFF;
+    border-radius:18px;
+    transition:.3s ease;
+    box-shadow:none;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(142,36,170,.15);
+}
+
+.card-body{
+    padding:28px 22px;
+}
+
+.card-title{
+    color:#8E24AA;
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.card-text{
+    color:#555;
+    font-size:15px;
+    line-height:1.6;
+    min-height:60px;
+}
+
+/* Buttons */
+
+.stati-btn{
+    background:#8E24AA;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    font-weight:600;
+}
+
+.stati-btn:hover{
+    background:#6A1B9A;
+    color:white;
+}
+
+/* Icons */
+
+.card-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+</style>
+
+<div class="container mt-5 stati-container">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+
+        <h2>STAT Dashboard</h2>
+
+        <p>Statistics, Analytics & Market Intelligence Portal</p>
+
+        <span class="dashboard-badge">
+            STAT Team Module
+        </span>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4">
+
+        <!-- KPI Report -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📊</div>
+
+                    <h3 class="card-title">KPI Report</h3>
+
+                    <p class="card-text">
+                        View key performance indicators, dashboards and analytics reports.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100">
+                        Open KPI Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Ocean Market Update -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">🌊</div>
+
+                    <h3 class="card-title">Ocean Market Update</h3>
+
+                    <p class="card-text">
+                        Access weekly ocean market intelligence reports and freight insights.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100">
+                        Open Market Update
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Power BI Reports -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📈</div>
+
+                    <h3 class="card-title">Power BI Reports</h3>
+
+                    <p class="card-text">
+                        View interactive dashboards, trends and performance reports.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100">
+                        Open Power BI
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Report Generator -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">📝</div>
+
+                    <h3 class="card-title">Weekly Report Generator</h3>
+
+                    <p class="card-text">
+                        Generate automated weekly ocean market reports and summaries.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100">
+                        Generate Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Validation -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">✔️</div>
+
+                    <h3 class="card-title">Data Validation</h3>
+
+                    <p class="card-text">
+                        Validate statistics data and improve report quality before publishing.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100">
+                        Open Validation
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+
+                    <div class="card-icon">🚀</div>
+
+                    <h3 class="card-title">Coming Soon</h3>
+
+                    <p class="card-text">
+                        Additional analytics and automation tools will be available soon.
+                    </p>
+
+                    <a href="#" class="btn stati-btn w-100 disabled">
+                        Coming Soon
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit User
+{% endblock %}
+
+{% block content %}
+
+<style>
+body{
+    background:#F5F4FB;
+}
+
+.form-container{
+    max-width:750px;
+    margin:40px auto;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+
+.btn-theme{
+    background:#306280;
+    color:white;
+}
+
+.btn-theme:hover{
+    background:#244b63;
+    color:white;
+}
+</style>
+
+<div class="container">
+
+    <div class="form-container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>Edit User</h3>
+
+            <a href="{% url 'user_management' %}" class="btn btn-outline-secondary">
+                ← Back
+            </a>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label>Employee Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        value="{{ profile.employee_name }}"
+                        required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Employee ID</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="{{ profile.employee_id }}"
+                        readonly>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="username"
+                        value="{{ profile.user.username }}"
+                        required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        value="{{ profile.user.email }}"
+                        required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Department</label>
+
+                    <select name="department" class="form-select">
+
+                        <option value="IT Automation"
+                            {% if profile.department == "IT Automation" %}selected{% endif %}>
+                            IT Automation
+                        </option>
+
+                        <option value="RFQ"
+                            {% if profile.department == "RFQ" %}selected{% endif %}>
+                            RFQ
+                        </option>
+
+                        <option value="GRDB"
+                            {% if profile.department == "GRDB" %}selected{% endif %}>
+                            GRDB
+                        </option>
+
+                        <option value="STATI"
+                            {% if profile.department == "STATI" %}selected{% endif %}>
+                            STATI
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label>Role</label>
+
+                    <select name="role" class="form-select">
+
+                        <option value="ADMIN"
+                            {% if profile.role == "ADMIN" %}selected{% endif %}>
+                            ADMIN
+                        </option>
+
+                        <option value="RFQ"
+                            {% if profile.role == "RFQ" %}selected{% endif %}>
+                            RFQ
+                        </option>
+
+                        <option value="GRDB"
+                            {% if profile.role == "GRDB" %}selected{% endif %}>
+                            GRDB
+                        </option>
+
+                        <option value="STATI"
+                            {% if profile.role == "STATI" %}selected{% endif %}>
+                            STATI
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-theme">
+                Update User
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

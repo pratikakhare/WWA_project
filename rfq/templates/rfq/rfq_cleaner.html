@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}RFQ Cleaner{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Upload RFQ Excel File</h5>
+        <p class="card-text text-muted">Choose an Excel workbook (.xlsx or .xls) and click Clean.</p>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" id="rfqForm">
+          {% csrf_token %}
+          <div class="mb-3">
+            <input class="form-control" type="file" id="fileInput" name="file" accept=".xlsx,.xls" required>
+            <div id="fileHelp" class="form-text">Accepted: .xlsx, .xls</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Clean File</button>
+        </form>
+
+        <hr>
+        <h6 class="mt-3">Supported Sheets</h6>
+        <ul class="list-inline">
+          <li class="list-inline-item">Aseem</li>
+          <li class="list-inline-item">Sunil</li>
+          <li class="list-inline-item">Samuel</li>
+          <li class="list-inline-item">Kajal</li>
+          <li class="list-inline-item">Shraddha</li>
+          <li class="list-inline-item">Sonali</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // show filename next to control (accessibility)
+  const fileInput = document.getElementById('fileInput');
+  if (fileInput) {
+    fileInput.addEventListener('change', ()=>{
+      if(fileInput.files && fileInput.files[0]){
+        fileInput.setAttribute('aria-label', fileInput.files[0].name);
+      }
+    });
+  }
+</script>
+
+{% endblock %}
