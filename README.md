@@ -1,5 +1,3 @@
-# WWA_project
-
 # WWA Project – Web Automation Platform
 
 WWA Project is a web automation platform designed to simplify and automate repetitive web-based tasks through an easy-to-use interface. The application helps users perform automated workflows efficiently while providing a clean and responsive user experience.
